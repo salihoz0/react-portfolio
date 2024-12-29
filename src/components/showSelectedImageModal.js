@@ -1,9 +1,6 @@
 import { Close } from "@mui/icons-material"
 import { Box, IconButton, Modal } from "@mui/material"
 
-
-
-
 const ImageModal = ({ selectedImage, setSelectedImage }) => {
     return (<Modal
         open={!!selectedImage}

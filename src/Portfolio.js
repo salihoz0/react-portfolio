@@ -13,14 +13,12 @@ import {
   IconButton,
   Button,
   ThemeProvider,
-  createTheme,
   CssBaseline,
   Paper,
   Divider,
   TextField,
   Grid2,
   Tooltip,
-  Badge,
 } from '@mui/material';
 import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';

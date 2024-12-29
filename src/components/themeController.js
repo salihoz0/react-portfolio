@@ -1,7 +1,7 @@
 import React from 'react';
 import { createTheme } from '@mui/material';
 import { Brightness4, Brightness7 } from '@mui/icons-material';
-import { IconButton, useTheme } from '@mui/material';
+import { IconButton } from '@mui/material';
 
 // Light theme configuration
 const lightTheme = createTheme({
