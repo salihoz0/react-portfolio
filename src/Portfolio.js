@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useMediaQuery } from "@mui/material";
 import {
   AppBar,
   Container,
   Typography,
   Card,
+  Grid,
   CardContent,
   Box,
   Chip,
@@ -90,7 +92,7 @@ const data = {
       "name": "Salih Öz",
       "title": "Full Stack Developer",
       "subtitle": "Node.js & React & React Native & PostgreSQL Developer",
-      "bio": "4 yıllık kişisel ve 1.5 yıllık profesyonel toplam 5.5 yıl deneyime sahip, modern web teknolojilerinde kendini geliştirmiş full stack developer. Kullanıcı deneyimini ön planda tutan, performans odaklı uygulamalar geliştiriyorum.",
+      "bio": "4 yıllık kişisel ve 1.5 yıllık profesyonel toplam 5.5 yıl deneyime sahibim. Modern web teknolojilerinde kendini geliştirmiş full stack developer. Kullanıcı deneyimini ön planda tutan, performans odaklı uygulamalar geliştiriyorum.",
       "image": pp,
       "resume": "/docs/cv.pdf",
       "contact": {
@@ -167,11 +169,11 @@ const data = {
         "description": "Yazılıma giriş kursu verdiğim zamanlarda basit örnek proje olarak yaptığımız ilan verme Express API servisi. Projede Framework olarak Express, Database olarak PostgreSQL ve ORM olarak Prisma kullanılmıştır.",
         "technologies": ["Express", "Node.js", "PostgreSQL"],
         "github": "https://github.com/salihoz0/ilan-ver-backend",
-        "image":nodeImage
+        "image": nodeImage
       },
       {
         "title": "İlan Ver React Frontend",
-        "description": "Yazılıma giriş kursu verdiğim zamanlarda eğitim amaçlı olarak geliştirilen ilan verme projesinin frontend kısmı. Bu proje, React temellerini, bileşen yapısını, durum yönetimini ve Material-UI uygulamasını gösteren eğitici bir örnek olarak hizmet veriyor. Öğrenciler, ilan listeleme, ilan oluşturma formları ve temel CRUD işlemleri gibi özelliklere sahip modern bir kullanıcı arayüzü oluşturmayı öğreniyor. Proje, React geliştirmedeki en iyi uygulamaları ve duyarlı tasarım prensiplerini vurguluyor.",
+        "description": "Yazılıma giriş kursu verdiğim zamanlarda eğitim amaçlı olarak geliştirilen ilan verme projesinin frontend kısmı. Bu proje, React temellerini, bileşen yapısını, durum yönetimini ve Material-UI uygulamasını gösteren eğitici bir örnek olarak hizmet veriyor. Öğrenciler, ilan listeleme, ilan oluşturma formları ve temel CRUD işlemleri gibi özelliklere sahip modern bir kullanıcı arayüzü oluşturmayı öğreniyor.",
         "technologies": ["React", "Material-UI"],
         "github": "https://play.google.com/store/apps/details?id=com.vecizeler&hl=tr&pli=1",
         "image": nodeImage
@@ -306,7 +308,7 @@ const data = {
         "description": "Developed with React Native, this app allows users to read and share quotes, and play a Q&A mini-game. The project utilizes Firebase Storage, Firebase Auth, and Firebase Push Notification. The app has reached over 4000+ downloads on Google Play Store.",
         "technologies": ["React Native", "Firebase", "Axios"],
         "live": "https://play.google.com/store/apps/details?id=com.vecizeler&hl=tr&pli=1",
-        "image":vecizeler
+        "image": vecizeler
       },
       {
         "title": "SecureText Mobile Application",
@@ -316,8 +318,8 @@ const data = {
         "image": secureText
       },
       {
-        "title": "Rahat Aktarim Website",
-        "description": "Rahat Aktarim website developed for my current company. Built with React and Node.js, the site allows users to automatically transfer their taxpayers' invoices, bank statements, etc. to the General Accounting program.",
+        "title": "Rahat Aktarım Website",
+        "description": "Rahat Aktarım website developed for my current company. Built with React and Node.js, the site allows users to automatically transfer their taxpayers' invoices, bank statements, etc. to the General Accounting program.",
         "technologies": ["React", "Socket.io", "BullMQ", "Node.js", "PostgreSQL", "Prisma ORM", "Electron"],
         "live": "https://rahataktarim.com",
         "image": aktarim
@@ -340,7 +342,7 @@ const data = {
         "description": "A simple Express API service for posting ads, created as an example project while teaching an introduction to programming course. The project uses Express as the framework, PostgreSQL as the database, and Prisma as the ORM.",
         "technologies": ["Express", "Node.js", "PostgreSQL"],
         "github": "https://github.com/salihoz0/ilan-ver-backend",
-        "image":nodeImage
+        "image": nodeImage
       },
       {
         "title": "Post Ad React Frontend",
@@ -463,10 +465,10 @@ const Portfolio = () => {
 
 
   const handleOpenModal = (doc) => {
-    console.log(doc);
     setSelectedDoc(doc);
     setModalOpen(true);
   };
+  const isLgOrUp = useMediaQuery((theme) => currentThemeInstance.breakpoints.up("lg"));
 
   const handleCloseModal = () => {
     setSelectedDoc(null);
@@ -505,7 +507,7 @@ const Portfolio = () => {
                     <Email />
                   </IconButton>
                 </Tooltip>
-                <ThemeToggle  isDarkMode={currentTheme === 'dark'} toggleTheme={() => setCurrentTheme(currentTheme === 'dark' ? 'light' : 'dark')}/>
+                <ThemeToggle isDarkMode={currentTheme === 'dark'} toggleTheme={() => setCurrentTheme(currentTheme === 'dark' ? 'light' : 'dark')} />
                 <LanguageSwitcher currentLanguage={currentLanguage} onLanguageChange={setCurrentLanguage} />
               </Box>
             </Box>
@@ -520,7 +522,6 @@ const Portfolio = () => {
                 p: 4,
                 mt: 8,
                 borderRadius: 4,
-                background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
                 boxShadow: '0 10px 40px rgba(0,0,0,0.1)'
               }}>
                 <Grid2 container spacing={4} alignItems="center">
@@ -577,7 +578,7 @@ const Portfolio = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <Typography variant="body1" paragraph>
+                      <Typography variant="body1" >
                         {dataInSelectedLanguage.personalInfo.bio}
                       </Typography>
                       <Box sx={{ mt: 3 }}>
@@ -592,7 +593,7 @@ const Portfolio = () => {
                               sx={{
                                 mr: 1,
                                 mb: 1,
-                                background: `linear-gradient(90deg, ${ currentThemeInstance.palette.primary.main} ${skill.level}%, #e0e0e0 ${skill.level}%)`,
+                                background: `linear-gradient(90deg, ${currentThemeInstance.palette.primary.main} ${skill.level}%, #e0e0e0 ${skill.level}%)`,
                                 color: 'white'
                               }}
                             />
@@ -618,11 +619,11 @@ const Portfolio = () => {
                 initial="hidden"
                 animate="visible"
               >
-                <Grid2 container spacing={4}>
+                <Grid container spacing={4} sx={{ justifyContent: "center", alignItems: "stretch" }}>
                   {dataInSelectedLanguage.projects.map((project, index) => (
-                    <Grid2 item xs={12} md={6} lg={4} xl={4} key={index}>
+                    <Grid item  xs={12} md={6} lg={4} xl={4} key={index}>
                       <motion.div variants={fadeInUp}>
-                        <Card >
+                        <Card  >
                           <Box sx={{
                             height: 200,
                             position: 'relative',
@@ -707,7 +708,7 @@ const Portfolio = () => {
                                   sx={{
                                     mr: 1,
                                     mb: 1,
-                             
+
                                   }}
                                 />
                               ))}
@@ -718,7 +719,7 @@ const Portfolio = () => {
                                   size="small"
                                   onClick={() => window.open(project.github)}
                                   sx={{
-                                  
+
                                   }}
                                 >
                                   <GitHub />
@@ -728,7 +729,7 @@ const Portfolio = () => {
                                 <IconButton
                                   size="small"
                                   onClick={() => window.open(project.live)}
-                              
+
                                 >
                                   <Language />
                                 </IconButton>
@@ -745,9 +746,9 @@ const Portfolio = () => {
                           </CardContent>
                         </Card>
                       </motion.div>
-                    </Grid2>
+                    </Grid>
                   ))}
-                </Grid2>
+                </Grid>
               </motion.div>
             </Box>
 
@@ -759,10 +760,34 @@ const Portfolio = () => {
                 </Typography>
                 <Divider sx={{ mb: 4 }} />
               </AnimatedSection>
-              <Timeline position="alternate">
+              <Timeline position={isLgOrUp ? "alternate" : "right"}
+                sx={{
+                  [`& .MuiTimelineContent-root`]: {
+                    // Mobilde içeriğin genişliğini ayarla
+                    maxWidth: { xs: '85%', sm: '90%', md: '100%' },
+                  },
+                  [`& .MuiTimelineSeparator-root`]: {
+                    // Timeline çizgisini mobilde sola kaydır
+                    [currentThemeInstance.breakpoints.down('lg')]: {
+                      minWidth: '40px',
+                    }
+                  },
+                  [`& .MuiTimelineItem-root`]: {
+                    // Mobilde öğeler arası boşluğu azalt
+                    [currentThemeInstance.breakpoints.down('lg')]: {
+                      minHeight: '70px',
+                      '&:before': {
+                        display: 'none' // Timeline öğelerinin sol padding'ini kaldır
+                      }
+                    }
+                  },
+                  // Timeline container'ın genişliğini ayarla
+                  width: { xs: '100%', sm: '95%', md: '100%' },
+                  margin: { xs: '0 auto', sm: '0 auto' }
+                }}>
                 {dataInSelectedLanguage.experiences.map((exp, index) => (
                   <AnimatedSection key={index}>
-                    <TimelineItem position={index % 2 === 0 ? "left" : "right"}>
+                    <TimelineItem position={isLgOrUp ? index % 2 === 0 ? "left" : "right" : "right"}>
                       <TimelineSeparator>
                         <TimelineDot color="primary">
                           <Work />
@@ -770,7 +795,14 @@ const Portfolio = () => {
                         <TimelineConnector />
                       </TimelineSeparator>
                       <TimelineContent>
-                        <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
+                        <Paper
+                          elevation={3}
+                          sx={{
+                            p: { xs: 2, sm: 3 }, // Mobilde padding'i azalt
+                            borderRadius: 2,
+                            // Mobilde kartın genişliğini ayarla
+                            width: { xs: '100%', sm: '100%', md: '100%' }
+                          }}>
                           <Typography variant="h6">{exp.position}</Typography>
                           <Typography variant="subtitle1" color="primary">
                             {exp.company}
@@ -778,7 +810,13 @@ const Portfolio = () => {
                           <Typography variant="subtitle2" color="textSecondary">
                             {exp.period}
                           </Typography>
-                          <Typography variant="body2" paragraph>
+                          <Typography
+                            variant="body2"
+                            paragraph
+                            sx={{
+                              // Mobilde font boyutunu küçült
+                              fontSize: { xs: '0.875rem', sm: '0.875rem', md: '1rem' }
+                            }}>
                             {exp.description}
                           </Typography>
                           <Box>
@@ -787,7 +825,12 @@ const Portfolio = () => {
                                 key={tech}
                                 label={tech}
                                 size="small"
-                                sx={{ mr: 1, mb: 1 }}
+                                sx={{
+                                  mr: 1,
+                                  mb: 1,
+                                  // Mobilde chip'lerin boyutunu küçült
+                                  fontSize: { xs: '0.75rem', sm: '0.75rem', md: '0.875rem' }
+                                }}
                               />
                             ))}
                           </Box>
@@ -807,10 +850,33 @@ const Portfolio = () => {
                 </Typography>
                 <Divider sx={{ mb: 4 }} />
               </AnimatedSection>
-              <Timeline position="alternate">
+              <Timeline position={isLgOrUp ? "alternate" : "rigth"} sx={{
+                [`& .MuiTimelineContent-root`]: {
+                  // Mobilde içeriğin genişliğini ayarla
+                  maxWidth: { xs: '85%', sm: '90%', md: '100%' },
+                },
+                [`& .MuiTimelineSeparator-root`]: {
+                  // Timeline çizgisini mobilde sola kaydır
+                  [currentThemeInstance.breakpoints.down('lg')]: {
+                    minWidth: '40px',
+                  }
+                },
+                [`& .MuiTimelineItem-root`]: {
+                  // Mobilde öğeler arası boşluğu azalt
+                  [currentThemeInstance.breakpoints.down('lg')]: {
+                    minHeight: '70px',
+                    '&:before': {
+                      display: 'none' // Timeline öğelerinin sol padding'ini kaldır
+                    }
+                  }
+                },
+                // Timeline container'ın genişliğini ayarla
+                width: { xs: '100%', sm: '95%', md: '100%' },
+                margin: { xs: '0 auto', sm: '0 auto' }
+              }}>
                 {dataInSelectedLanguage.education.map((edu, index) => (
                   <AnimatedSection key={index}>
-                    <TimelineItem position={index % 2 === 0 ? "left" : "right"}>
+                    <TimelineItem position={isLgOrUp ? index % 2 === 0 ? "left" : "right" : "right"}>
                       <TimelineSeparator>
                         <TimelineDot color="secondary">
                           <School />
@@ -885,7 +951,7 @@ const Portfolio = () => {
                                   <IconButton
                                     href={cert.link}
                                     target="_blank"
-                                 
+
                                   >
                                     <OpenInNewIcon />
                                   </IconButton>
